@@ -49,7 +49,7 @@
             <li><a href="#orders" class="waves-effect"><i class="material-icons">assignment</i>Orders</a></li>
             <li><a href="{{ route('admin.productsdash') }}" class="waves-effect"><i class="material-icons">local_pharmacy</i>Products</a></li>
             <li><a href="#customers" class="waves-effect"><i class="material-icons">people</i>Customers</a></li>
-            <li><a href="#reports" class="waves-effect"><i class="material-icons">bar_chart</i>Reports</a></li>
+            <li><a href="{{ route('admin.reports') }}" class="waves-effect"><i class="material-icons">bar_chart</i>Reports</a></li>
             <li><div class="divider"></div></li>
             <li><a href="#settings" class="waves-effect"><i class="material-icons">settings</i>Settings</a></li>
             <li><a href="#logout" class="waves-effect"><i class="material-icons">exit_to_app</i>Logout</a></li>

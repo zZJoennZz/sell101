@@ -24,6 +24,16 @@ class StockTransactionController extends Controller
             'remarks'          => 'nullable|string|max:255',
         ]);
 
+        // Prevent OUT if insufficient stock
+        if ($validated['transaction_type'] === 'out') {
+            $batch = \App\Models\StockBatch::find($validated['stock_batch_id']);
+            if (!$batch || $batch->quantity < $validated['quantity']) {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors(['quantity' => 'Insufficient stock in this batch for OUT transaction.']);
+            }
+        }
+
         StockTransaction::create($validated);
 
         return redirect()->back()->with('success', 'Stock transaction recorded and product stock updated.');

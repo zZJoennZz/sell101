@@ -12,6 +12,7 @@ class ProductVariation extends Model
         'name',
         'sku',
         'price',
+        'stock',
         'status',
     ];
 

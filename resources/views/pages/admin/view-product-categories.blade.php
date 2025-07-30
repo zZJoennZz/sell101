@@ -2,7 +2,9 @@
     <x-slot:title>
         List of Product Categories
     </x-slot>
-
+    <div style="padding-left: 25px;">
+        <a href="{{ route('admin.productsdash') }}" class="btn-small waves-effect waves-light"><i class="small material-icons left">arrow_back</i> Back</a>
+    </div>
     <div class="container" style="padding-top: 20px;">
         <div class="row">
             <div class="col s12 m8">

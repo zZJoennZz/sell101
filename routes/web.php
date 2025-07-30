@@ -8,9 +8,9 @@ use App\Http\Controllers\ProductDashboardController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\StockBatchController;
 use App\Http\Controllers\StockTransactionController;
+use App\Http\Controllers\ProductPageController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', [PublicController::class, 'home'])->name('public.home');
 
 Route::prefix('admin')->group(function () {
     //admin dashboard
@@ -52,4 +52,17 @@ Route::prefix('admin')->group(function () {
     Route::post('/add-stock-batch', [StockBatchController::class, 'store'])->name('admin.stockbatches.store');
     Route::get('/edit-stock-batch/{id}', [StockBatchController::class, 'edit'])->name('admin.stockbatches.edit');
     Route::put('/edit-stock-batch/{id}', [StockBatchController::class, 'update'])->name('admin.stockbatches.update');
+
+    // reports
+    Route::get('/reports', [ReportController::class, 'all_reports'])->name('admin.reports');
+    Route::get('/reports/stock-level', [ReportController::class, 'stock_level_report'])->name('admin.stock-level');
+    Route::get('/reports/preview/stock-level-preview', [ReportController::class, 'stock_level'])->name('admin.stock-level-preview');
+    Route::get('/reports/stock-movement', [ReportController::class, 'stock_movement_report'])->name('admin.stock-movement');
+    Route::get('/reports/preview/stock-movement-preview', [ReportController::class, 'stock_movement'])->name('admin.stock-movement-preview');
+    Route::get('/reports/low-stock', [ReportController::class, 'low_stock_report'])->name('admin.low-stock');
+    Route::get('/reports/preview/low-stock', [ReportController::class, 'low_stock_print'])->name('admin.low-stock-print');
 });
+
+Route::get('/', [PublicController::class, 'home'])->name('public.home');
+// Product page route
+Route::get('/product/{slug}', [ProductPageController::class, 'show'])->name('product.show');

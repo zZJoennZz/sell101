@@ -10,7 +10,7 @@
     <style>
         .product-card img {
             width: 100%;
-            height: 100%;
+            height: 150px;
             object-fit: cover;
         }
 
@@ -99,6 +99,19 @@
             color: #fff;
             text-decoration: underline;
         }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -169,11 +182,17 @@
                     </div>
                 </div> -->
                 @foreach($products as $product)
-                <div class="col s12 m2 offset-m1 product-card">
-                    <div class="card small">
-                        <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}">
+                <div class="col s12 l3 product-card">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="{{ route('product.show', ['slug' => $product->slug]) }}">
+                                <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}">
+                                <div class="overlay">
+                                    <span class="card-title">{{ $product->name }}</span>
+                                </div>
+                            </a>
+                        </div>
                         <div class="card-content">
-                            <span class="card-title">{{ $product->name }}</span>
                             <p class="teal-text">
                                 @if($product->variations->count() > 1)
                                     <b>₱{{ $product->variations->min('price') }} - ₱{{ $product->variations->max('price') }}</b>

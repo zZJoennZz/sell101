@@ -112,14 +112,17 @@
                                         @php $vars = old('variations', $product->variations->toArray()); @endphp
                                         @for($i = 0; $i < max(1, count($vars)); $i++)
                                             <div class="row" style="margin-bottom:0;">
-                                                <div class="input-field col s3">
+                                                <div class="input-field col s2">
                                                     <input type="text" name="variations[{{$i}}][name]" value="{{ $vars[$i]['name'] ?? '' }}" placeholder="Variation Name">
                                                 </div>
-                                                <div class="input-field col s3">
+                                                <div class="input-field col s2">
                                                     <input type="text" name="variations[{{$i}}][sku]" value="{{ $vars[$i]['sku'] ?? '' }}" placeholder="SKU">
                                                 </div>
-                                                <div class="input-field col s3">
+                                                <div class="input-field col s2">
                                                     <input type="number" step="0.01" min="0" name="variations[{{$i}}][price]" value="{{ $vars[$i]['price'] ?? '' }}" placeholder="Price">
+                                                </div>
+                                                <div class="input-field col s2">
+                                                    <input type="text" name="variations[{{$i}}][unit]" value="{{ $vars[$i]['unit'] ?? '' }}" placeholder="Unit">
                                                 </div>
                                                 <div class="input-field col s2">
                                                     <select name="variations[{{$i}}][status]">
@@ -180,14 +183,17 @@
             let varIdx = {{ max(1, count(old('variations', $product->variations))) }};
             document.getElementById('add-variation-btn').onclick = function() {
                 let html = `<div class="row" style="margin-bottom:0;">
-                    <div class="input-field col s3">
+                    <div class="input-field col s2">
                         <input type="text" name="variations[${varIdx}][name]" placeholder="Variation Name">
                     </div>
-                    <div class="input-field col s3">
+                    <div class="input-field col s2">
                         <input type="text" name="variations[${varIdx}][sku]" placeholder="SKU">
                     </div>
-                    <div class="input-field col s3">
+                    <div class="input-field col s2">
                         <input type="number" step="0.01" min="0" name="variations[${varIdx}][price]" placeholder="Price">
+                    </div>
+                    <div class="input-field col s2">
+                        <input type="text" name="variations[${varIdx}][unit]" placeholder="Unit">
                     </div>
                     <div class="input-field col s2">
                         <select name="variations[${varIdx}][status]">

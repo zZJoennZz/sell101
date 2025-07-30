@@ -28,7 +28,7 @@
                         <form method="POST" action="{{ route('admin.stockbatches.store') }}">
                             @csrf
                             <div class="row" style="margin-bottom:0;">
-                                <div class="input-field col s12">
+                                <div class="input-field col s12 m6">
                                     <select id="product_id" name="product_id" required>
                                         <option value="" disabled selected>Choose product</option>
                                         @foreach($products as $product)
@@ -37,7 +37,7 @@
                                     </select>
                                     <label>Product</label>
                                 </div>
-                                <div class="input-field col s12">
+                                <div class="input-field col s12 m6">
                                     <select id="product_variation_id" name="product_variation_id" required>
                                         <option value="" disabled selected>Choose variation</option>
                                         @foreach($variations as $variation)
@@ -51,6 +51,10 @@
                                 <div class="input-field col s12 m6">
                                     <input id="batch_number" name="batch_number" type="text" value="{{ old('batch_number') }}" required>
                                     <label for="batch_number" @if(old('batch_number')) class="active" @endif>Batch Number</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input id="unit_price" name="unit_price" type="text" value="{{ old('unit_price') }}" required>
+                                    <label for="unit_price" @if(old('unit_price')) class="active" @endif>Unit Price</label>
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <select id="has_expiry" name="has_expiry" required>

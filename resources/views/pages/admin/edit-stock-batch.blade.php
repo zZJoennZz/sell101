@@ -26,17 +26,21 @@
                             </div>
                         @endif
                         <div class="row" style="margin-bottom:0;">
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m6">
                                 <input type="text" value="{{ $batch->productVariation->product->name ?? '-' }}" disabled>
                                 <label class="active">Product</label>
                             </div>
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m6">
                                 <input type="text" value="{{ $batch->productVariation->name ?? '-' }}" disabled>
                                 <label class="active">Product Variation</label>
                             </div>
-                            <div class="input-field col s12 m6">
+                            <div class="input-field col s12 m12">
                                 <input type="text" value="{{ $batch->batch_number }}" disabled>
                                 <label class="active">Batch Number</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <input type="text" value="{{ $batch->unit_price }}" disabled>
+                                <label class="active">Unit Price</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <input type="text" value="{{ $batch->quantity }}" disabled>

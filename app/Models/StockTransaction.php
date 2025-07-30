@@ -35,6 +35,11 @@ class StockTransaction extends Model
                     }
                     $batch->save();
 
+                    // Update variation stock (sum all batches for this variation)
+                    $variationTotalStock = $variation->batch()->sum('quantity');
+                    $variation->stock = $variationTotalStock;
+                    $variation->save();
+
                     // Update product stock (sum all batches for this product)
                     $product = $variation->product;
                     $totalStock = $product->variations()

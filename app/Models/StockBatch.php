@@ -10,6 +10,7 @@ class StockBatch extends Model
     protected $fillable = [
         'product_variation_id',
         'batch_number',
+        'unit_price',
         'quantity',
         'has_expiry',
         'manufacture_date',

@@ -2,6 +2,9 @@
     <x-slot:title>
         Stock Batches
     </x-slot>
+    <div style="padding-left: 25px;">
+        <a href="{{ route('admin.productsdash') }}" class="btn-small waves-effect waves-light"><i class="small material-icons left">arrow_back</i> Back</a>
+    </div>
     <div class="container" style="padding-top: 20px;">
         <div class="row">
             <div class="col s12 m12">
@@ -48,6 +51,7 @@
                                 <th>Product</th>
                                 <th>Variation</th>
                                 <th>Batch #</th>
+                                <th>Unit Price</th>
                                 <th>Qty</th>
                                 <th>Has Expiry</th>
                                 <th>Mfg Date</th>
@@ -62,6 +66,7 @@
                                     <td>{{ $batch->productVariation->product->name ?? '-' }}</td>
                                     <td>{{ $batch->productVariation->name ?? '-' }}</td>
                                     <td>{{ $batch->batch_number }}</td>
+                                    <td>{{ $batch->unit_price }}</td>
                                     <td>{{ $batch->quantity }}</td>
                                     <td>{{ $batch->has_expiry ? 'Yes' : 'No' }}</td>
                                     <td>{{ $batch->manufacture_date }}</td>

@@ -38,6 +38,7 @@ class StockBatchController extends Controller
         $validated = $request->validate([
             'product_variation_id' => 'required|exists:product_variations,id',
             'batch_number'         => 'required|string|max:255',
+            'unit_price'           => 'nullable|numeric|min:0',
             'has_expiry'           => 'required|boolean',
             'manufacture_date'     => 'nullable|date',
             'expiry_date'          => 'nullable|date|after_or_equal:manufacture_date',
@@ -67,6 +68,7 @@ class StockBatchController extends Controller
             'product_variation_id' => 'required|exists:product_variations,id',
             'batch_number'         => 'required|string|max:255',
             'has_expiry'           => 'required|boolean',
+            'unit_price'           => 'nullable|numeric|min:0',
             'manufacture_date'     => 'nullable|date',
             'expiry_date'          => 'nullable|date|after_or_equal:manufacture_date',
             'status'               => 'required|in:active,inactive',

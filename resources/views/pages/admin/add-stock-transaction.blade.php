@@ -3,7 +3,7 @@
         Add Stock Transaction
     </x-slot>
     <div style="padding-left: 25px;">
-        <a href="{{ url()->previous() }}" class="btn-small waves-effect waves-light"><i class="small material-icons left">arrow_back</i> Back</a>
+        <a href="{{ route('admin.stocktransactions') }}" class="btn-small waves-effect waves-light"><i class="small material-icons left">arrow_back</i> Back</a>
     </div>
     <div class="container" style="padding:0;">
         <div class="row" style="margin-bottom:0;">

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_variation_id')->constrained('product_variations')->onDelete('cascade');
             $table->string('batch_number')->unique();
+            $table->decimal('unit_price', 10, 2);
             $table->integer('quantity')->default(0);
             $table->boolean('has_expiry')->default(false);
             $table->date('manufacture_date')->nullable();
