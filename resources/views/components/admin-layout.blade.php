@@ -52,7 +52,7 @@
             <li><a href="{{ route('admin.reports') }}" class="waves-effect"><i class="material-icons">bar_chart</i>Reports</a></li>
             <li><div class="divider"></div></li>
             <li><a href="#settings" class="waves-effect"><i class="material-icons">settings</i>Settings</a></li>
-            <li><a href="#logout" class="waves-effect"><i class="material-icons">exit_to_app</i>Logout</a></li>
+            <li><a href="{{ route('admin.logout') }}" class="waves-effect"><i class="material-icons">exit_to_app</i>Logout</a></li>
         </ul>
         <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only btn-floating btn-small teal" style="position:fixed;top:16px;left:16px;z-index:1001;">
             <i class="material-icons">menu</i>

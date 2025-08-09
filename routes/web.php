@@ -10,9 +10,33 @@ use App\Http\Controllers\StockBatchController;
 use App\Http\Controllers\StockTransactionController;
 use App\Http\Controllers\ProductPageController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AuthController;
+
+use App\Http\Middleware\CheckUserRole;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('guest')->group(function() {
+    Route::get('/login', [AuthController::class, 'admin_login'])->name('admin.login');
+    Route::post('/login', [AuthController::class, 'admin_login_post'])->middleware('throttle:5,1')->name('admin.postlogin');
+
+    Route::get('/first-account', function() {
+        if (!\App\Models\User::where('role', 'admin')->exists()) {
+            \App\Models\User::create([
+                'first_name' => 'Admin',
+                'last_name' => 'Admin',
+                'email' => 'shift101.solutions@gmail.com',
+                'password' => 'admin',
+                'role' => 'admin',
+            ]);
+        } else {
+            return redirect()->route('admin.login');
+        }
+    });
+});
+
+Route::prefix('admin')->middleware(CheckUserRole::class.':admin')->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
     //admin dashboard
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 

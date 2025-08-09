@@ -121,7 +121,9 @@
     <div class="main-nav nav-desktop">
         <div class="row valign-wrapper" style="margin-bottom:0;">
             <div class="col s12 m3 left-align">
-                <span class="brand-logo">SELL101</span>
+                <a href="{{ route('public.home') }}">
+                    <span class="brand-logo">SELL101</span>
+                </a>
             </div>
             <div class="col s12 m6">
                 <form class="search-bar" style="margin:0;">
